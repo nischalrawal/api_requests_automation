@@ -1,11 +1,14 @@
 import asyncio
 import json
+
 from configs.config import API_ENDPOINTS
+from utils.audio_handler import AudioHandler
+
 # from app.routes.cover import CoverEndpoint
 # from app.routes.deecho import DeechoEndpoint
-# from app.routes.remix import RemixEndpoint
+from app.routes.remix import RemixEndpoint
 from app.routes.music_ai import Music_AI_Endpoints
-from utils.audio_handler import AudioHandler
+
 
 download_path = "/default/downloadAudio"
 
