@@ -1,0 +1,10 @@
+venv
+.venv
+.env
+configs/*.py
+utils/logger.py
+
+
+#pipenv 
+Pipfile.lock
+Pipfile
