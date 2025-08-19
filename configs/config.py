@@ -76,6 +76,29 @@ API_ENDPOINTS={
         }
     },
     
+    "/conversions/generateAudio":{
+        "type": "music_ai",
+        "payload_type" : "json",
+        "payload":{
+            "music_style" : "",
+            "prompt": "Generate a song about music and life",
+            "lyrics": "",
+            "negative_tags": "",
+            "make_instrumental": "false",
+            "vocal_only": "false",
+            "key": "",
+            "bpm": 0,
+            "conversion_id_1": uuid1,
+            "conversion_id_2": uuid2,
+            "webhook_url": f"https://{WEB_HOOK}.ngrok-free.app/music_ai",
+            "voice_id": "",
+            "beam_api_url": ""
+        
+        }
+            
+        
+    },
+    
     "/default/downloadAudio":{
         "payload":{
             "url" : Handler_Data["short_audio"],

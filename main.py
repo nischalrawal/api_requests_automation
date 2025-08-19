@@ -3,7 +3,8 @@ import json
 from configs.config import API_ENDPOINTS
 # from app.routes.cover import CoverEndpoint
 # from app.routes.deecho import DeechoEndpoint
-from app.routes.remix import RemixEndpoint
+# from app.routes.remix import RemixEndpoint
+from app.routes.music_ai import Music_AI_Endpoints
 from utils.audio_handler import AudioHandler
 
 download_path = "/default/downloadAudio"
@@ -11,7 +12,8 @@ download_path = "/default/downloadAudio"
 Function_Map = {
     # "cover": CoverEndpoint,
     # "deecho": DeechoEndpoint,
-    "remix": RemixEndpoint
+    # "remix": RemixEndpoint,
+    "music_ai" : Music_AI_Endpoints
 }
 
 
@@ -32,7 +34,9 @@ async def run_requests():
 
     if s3_filepath:
         for endpoint_key, endpoint_data in API_ENDPOINTS.items():
+            #Loop all other endpoints except download path
             if endpoint_key != download_path:
+                #Insert the downloaded file path in audio_path
                 if "audio_path" in endpoint_data["payload"]:
                     endpoint_data["payload"]["audio_path"] = s3_filepath
 

@@ -22,21 +22,27 @@ async def webhook(response : Request):
 async def cover(response : Request):
     print("Response received from cover")
     data = await response.json()
-    print(f"cover {data}")
+    print(f"cover : {data}")
 
 
 @app.post("/deecho")
 async def deecho (response : Request):
     print("Response received from deecho")
     data = await response.json()
-    print(f"deecho {data}")
+    print(f"deecho : {data}")
     
     
 @app.post("/remix")
 async def remix (response : Request):
     print("Response received from remix")
     data = await response.json()
-    print(f"deecho {data}")
+    print(f"remix : {data}")
+
+@app.post("/music_ai")
+async def music_ai (response : Request):
+    print("Response received from music_ai")
+    data = await response.json()
+    print(f"music_ai :  {data}")
 
 
 
