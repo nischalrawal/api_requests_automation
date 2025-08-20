@@ -5,7 +5,7 @@ import json
 from configs.config import API_ENDPOINTS
 # from app.routes.cover import CoverEndpoint
 # from app.routes.deecho import DeechoEndpoint
-from app.routes.remix import RemixEndpoint
+from app.routes.conversions.remix import RemixEndpoint
 from utils.audio_handler import AudioHandler
 
 

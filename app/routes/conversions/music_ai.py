@@ -1,6 +1,6 @@
 import httpx
 
-from app.routes.base_endpoint import BaseEndpoint
+from app.routes.core.base_endpoint import BaseEndpoint
 
 
 

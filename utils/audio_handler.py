@@ -4,7 +4,7 @@ import json
 import httpx
 from dotenv import load_dotenv
 
-from app.routes.base_endpoint import BaseEndpoint
+from app.routes.core.base_endpoint import BaseEndpoint
 from configs.config import API_ENDPOINTS, Handler_Data
 
 load_dotenv()

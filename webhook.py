@@ -18,29 +18,29 @@ async def webhook(response : Request):
     print(data)
 
 
-@app.post("/cover")
+@app.post("/musicgpt/cover")
 async def cover(response : Request):
-    print("Response received from cover")
+    print("Response received from musicgpt/cover")
     data = await response.json()
     print(f"cover : {data}")
 
 
-@app.post("/deecho")
+@app.post("/musicgpt/deecho")
 async def deecho (response : Request):
-    print("Response received from deecho")
+    print("Response received from musicgpt/deecho")
     data = await response.json()
     print(f"deecho : {data}")
     
     
-@app.post("/remix")
+@app.post("/conversions/remix")
 async def remix (response : Request):
-    print("Response received from remix")
+    print("Response received from conversions/remix")
     data = await response.json()
     print(f"remix : {data}")
 
-@app.post("/music_ai")
+@app.post("/conversions/music_ai")
 async def music_ai (response : Request):
-    print("Response received from music_ai")
+    print("Response received from conversions/music_ai")
     data = await response.json()
     print(f"music_ai :  {data}")
 

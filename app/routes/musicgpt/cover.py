@@ -1,15 +1,15 @@
 import httpx
 
-from app.routes.base_endpoint import BaseEndpoint
+from app.routes.core.base_endpoint import BaseEndpoint
 
 
 
 ### This class will be called in main and send the respons where the object will be called    
 
 
-class RemixEndpoint(BaseEndpoint):
+class CoverEndpoint(BaseEndpoint):
     async def execute(self):
-        print("Request send to remix")
+        print("Cover ran")
         async with httpx.AsyncClient() as client:
             if self.endpoint_data["payload_type"] == "form":
                 
@@ -17,6 +17,6 @@ class RemixEndpoint(BaseEndpoint):
             else :
                 resp = await client.post(self.url, json = self.endpoint_data["payload"], headers = self.headers)
                 
-        print(f"[Remix] {self.endpoint_key} -> {resp.status_code}")
+        print(f"[COVER] {self.endpoint_key} -> {resp.status_code}")
         
         return resp.json()

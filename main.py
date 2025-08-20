@@ -6,21 +6,30 @@ from utils.audio_handler import AudioHandler
 
 # from app.routes.cover import CoverEndpoint
 # from app.routes.deecho import DeechoEndpoint
-from app.routes.remix import RemixEndpoint
-from app.routes.music_ai import Music_AI_Endpoints
+from app.routes.conversions.remix import RemixEndpoint
+from app.routes.conversions.music_ai import Music_AI_Endpoints
 
 
 download_path = "/default/downloadAudio"
 
 Function_Map = {
-    # "cover": CoverEndpoint,
-    # "deecho": DeechoEndpoint,
-    # "remix": RemixEndpoint,
-    "music_ai" : Music_AI_Endpoints
+    
+    "music_gpt":{
+         # "cover": CoverEndpoint,
+         # "deecho": DeechoEndpoint,
+    },
+    
+    "conversions":{
+          # "remix": RemixEndpoint,
+        "music_ai" : Music_AI_Endpoints
+    }
+    
+   
+  
 }
 
 
-async def run_requests():
+async def run_requests(target_group = None):
     tasks = []
     s3_filepath = None
 
@@ -44,12 +53,23 @@ async def run_requests():
                     endpoint_data["payload"]["audio_path"] = s3_filepath
 
                 endpoint_type = endpoint_data.get("type")
-                if endpoint_type in Function_Map:
-                    obj = Function_Map[endpoint_type](endpoint_key, endpoint_data)
-                    print(obj)
-                    tasks.append(obj.execute())
+                if endpoint_type :
+                    group, name = endpoint_type.split(".",1)
+                    
+                    #If the target group does not match the group then it skipped for that iteration
+                    
+                    if target_group and group != target_group:
+                        continue
+                    
+                    #Function_Map wil get the class name
+                    endpoint_class = Function_Map.get(group,{}).get(name)
+                    if endpoint_class:
+                        obj = endpoint_class(endpoint_key, endpoint_data)
+                   
+                        print(obj)
+                        tasks.append(obj.execute())
 
-    # print("Audio path from the config:", API_ENDPOINTS["/musicgpt/cover"]["payload"]["audio_path"])
+    print("Webhook from the config:", API_ENDPOINTS["/musicgpt/cover"]["payload"]["webhook_url"])
 
     if tasks:
         results = await asyncio.gather(*tasks)
@@ -60,7 +80,7 @@ async def run_requests():
 
 async def main():
     while True:
-        await run_requests()
+        await run_requests(target_group="conversions")
         print("Waiting for 40 seconds before the next request cycle...\n")
         await asyncio.sleep(40)
 
