@@ -26,7 +26,7 @@ class BaseEndpoint:
                 resp = await client.post(self.url, json = self.endpoint_data, headers=self.headers)
         
             else:
-                print("Batman coming")
+                print("super coming")
                 resp = await client.post(self.url, data = self.endpoint_data, headers = self.headers)
                 print(resp)
     pass
