@@ -37,7 +37,7 @@ Handler_Data={
 # API payload
 API_ENDPOINTS={
     "/musicgpt/cover":{
-        "type" : "cover",
+        "type" : "muscigpt.cover",
         "payload_type" : "form",
         "payload" : {
             "audio_path": "",
@@ -50,7 +50,7 @@ API_ENDPOINTS={
     },
     
     "/musicgpt/deecho":{
-        "type":"deecho",
+        "type":"musicgpt.deecho",
         "payload_type" : "json",
         "payload" : {
             "audio_path" : "",
@@ -62,7 +62,7 @@ API_ENDPOINTS={
     },
     
     "/conversions/Remix":{
-         "type":"remix",
+         "type":"conversions.remix",
         "payload_type" : "form",
         "payload" : {
             "audio_path" : "",

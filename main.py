@@ -6,8 +6,8 @@ from utils.audio_handler import AudioHandler
 
 # from app.routes.cover import CoverEndpoint
 # from app.routes.deecho import DeechoEndpoint
-# from app.routes.conversions.remix import RemixEndpoint
-from app.routes.conversions.music_ai import Music_AI_Endpoints
+from app.routes.conversions.remix import RemixEndpoint
+# from app.routes.conversions.music_ai import Music_AI_Endpoints
 
 
 download_path = "/default/downloadAudio"
@@ -20,8 +20,8 @@ Function_Map = {
     },
     
     "conversions":{
-        #   "remix": RemixEndpoint
-        "music_ai" : Music_AI_Endpoints
+          "remix": RemixEndpoint
+        # "music_ai" : Music_AI_Endpoints
     }
     
    
